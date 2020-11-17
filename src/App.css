@@ -1,38 +1,49 @@
-.App {
+.restaurant-img {
+  background-image: linear-gradient(90deg, rgba(47,45,65, .7), rgba(47,45,65, .7)), url('https://cdn.otstatic.com/cfe/5/images/25161502-fbb7de.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  position: absolute;
+  height: 30rem;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+.header {
+  color: white;
+  font-size: 48px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.submit-btn {
+  border-style: none;
+  background-color: #da3743;
+  color: #fff;
+  height: 3rem;
+  width: 5%;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.search-bar {
+  color: #91949a;
+  border: none;
+  height: 3rem;
+  width: 15%;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  text-align: center;
+  margin: 0 1rem;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: center;
 }
