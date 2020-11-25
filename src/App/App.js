@@ -1,3 +1,4 @@
+import react, { Component } from 'react'
 import './App.css'
 import RestaurantCard from '../RestaurantCard/RestaurantCard.js'
 import { data } from '../mockData.js'
@@ -22,9 +23,9 @@ class App extends Component {
       </header>
       <section className='cards'>
       {data.map((restaurant, index) => (
-        <li key={index}>
+        <div key={index}>
           <RestaurantCard restaurant={restaurant} />
-        </li>
+        </div>
       ))}
       </section>
       </main>

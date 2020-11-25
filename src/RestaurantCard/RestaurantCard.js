@@ -1,7 +1,8 @@
+import react, { Fragment } from 'react'
 
 const RestaurantCard = ({ restaurant }) => {
     return(
-      <div>
+      <Fragment>
         <img src={restaurant.image} />
         <h4>{restaurant.name}</h4>
         <p>{restaurant.rating}</p>
@@ -10,7 +11,7 @@ const RestaurantCard = ({ restaurant }) => {
           <li>{restaurant.price}</li>
           <li>{restaurant.location}</li>
         </ul>
-      </div>
+      </Fragment>
     )
 }
 
