@@ -1,7 +1,6 @@
 import react, { Component } from 'react'
 import './App.css'
 import RestaurantCard from '../RestaurantCard/RestaurantCard.js'
-import { data } from '../mockData.js'
 import axios from 'axios'
 
 class App extends Component {
@@ -12,13 +11,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios
-    .get('https://radiant-meadow-15877.herokuapp.com/restaurants')
-    .then(res => this.setState({restaurants: res.data }))
+    axios.get('https://radiant-meadow-15877.herokuapp.com/restaurants')
+    .then(res => this.setState({restaurants: res.data, loading: true}))
+    .then(() => this.setState({loading: false}))
+    .then(() => console.log(this.state.restaurants))
   }
 
   render() {
-
     return(
       <main className='mainContent'>
       <header className='restaurant-img'>
@@ -32,7 +31,7 @@ class App extends Component {
         </form>
       </header>
       <section className='cards'>
-          <RestaurantCard restaurants={this.state.restaurants} />
+          <RestaurantCard restaurants={this.state.restaurants} loading={this.state.loading} />
       </section>
       </main>
     )
