@@ -1,16 +1,17 @@
 import react, { Fragment } from 'react'
 
-const RestaurantCard = ({ restaurant }) => {
+const RestaurantCard = ({ restaurants }) => {
     return(
       <Fragment>
-        <img src={restaurant.image} />
+        {console.log(restaurants)}
+        {/* <img src={restaurant.image} /> 
         <h4>{restaurant.name}</h4>
         <p>{restaurant.rating}</p>
         <ul>
           <li>{restaurant.cuisine}</li>
           <li>{restaurant.price}</li>
           <li>{restaurant.location}</li>
-        </ul>
+        </ul>*/}
       </Fragment>
     )
 }
