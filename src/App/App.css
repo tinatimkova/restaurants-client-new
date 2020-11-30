@@ -22,37 +22,6 @@ header.restaurant-img {
   text-align: center;
 }
 
-.submit-btn {
-  border-style: none;
-  background-color: #da3743;
-  color: #fff;
-  height: 3rem;
-  width: 5%;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.search-bar {
-  color: #91949a;
-  border: none;
-  height: 3rem;
-  width: 15%;
-  outline: none;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.5rem;
-  text-align: center;
-  margin: 0 1rem;
-  padding: 0;
-}
-
-.search {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .mainContent {
   display: block;
 }
