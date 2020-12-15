@@ -1,3 +1,12 @@
+:root {
+  --star-size: 30px;
+  --star-color: rgb(225, 225, 225);
+  --star-background: #da3743;
+  --dollar-size: 1rem;
+  --dollar-color: #0000;
+  --dollar-background: rgb(225, 225, 225);
+}
+
 header.restaurant-img {
   display: flex;
   flex-direction: column;
@@ -33,7 +42,7 @@ section.cards {
   justify-content: center;
 }
 
-section.cards div{
+section.cards div {
   margin: 1rem;
 }
 
@@ -68,6 +77,46 @@ section.cards div{
   cursor: pointer;
 }
 
-.card-img{
+.card-img {
   max-width: 350px;
+}
+
+.stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+}
+
+.stars::before {
+  content: "★★★★★";
+  background: linear-gradient(
+    90deg,
+    var(--star-background) var(--percent),
+    var(--star-color) var(--percent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dollars {
+  --percent: calc(var(--price) / 4 * 100%);
+  font-size: var(--dollar-size);
+  margin-left: 0.5rem;
+}
+
+.dollars::before {
+  content: "$$$$";
+  -webkit-text-fill-color: var(--dollar-background);
+}
+
+.name {
+  font-weight: bold;
+}
+
+.reviews {
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
 }

@@ -2,6 +2,7 @@ import react, { Component } from 'react'
 import './App.css'
 import RestaurantCard from '../components/RestaurantCard/RestaurantCard.js'
 import Search from '../components/Search/Search.js'
+import { cuisines } from '../mockData'
 import axios from 'axios'
 
 class App extends Component {
@@ -19,15 +20,24 @@ class App extends Component {
 
   //Search restaurants
   searchRestaurants = (location, cuisine) => {
+    let cuisineId
+    cuisines.map(i => {
+      if (i['cuisine']['cuisine_name'] === cuisine) {
+        cuisineId = i['cuisine']['cuisine_id'].toString()
+      }
+    })
+
     axios({
       method: 'GET',
-      url: `https://developers.zomato.com/api/v2.1/search?entity_type=city&q=${location}&cuisines=${cuisine}`,
+      url: `https://developers.zomato.com/api/v2.1/search?entity_id=${location}&cuisines=${cuisineId}`,
       headers: {
         'user-key': '3db78ccb4d5aca6f67f342f16abd68ac',
         'content-type': 'application/json'
       }
     })
-    .then(res => this.setState({ restaurants: res.data.restaurants, loading: true}))
+    .then(res => 
+      { console.log(res)
+        this.setState({ restaurants: res.data.restaurants, loading: true})})
     .then(() => this.setState({ loading: false }))
   }
 

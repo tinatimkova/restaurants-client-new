@@ -1,5 +1,4 @@
-export const cuisine = {
-  "cuisines": [
+export const cuisines = [
     {
       "cuisine": {
         "cuisine_id": 1035,
@@ -667,4 +666,3 @@ export const cuisine = {
       }
     }
   ]
-}
