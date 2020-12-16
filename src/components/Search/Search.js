@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Search.module.css';
+import styles from './Search.module.css';
 
 class Search extends Component {
     state={
@@ -17,12 +17,12 @@ class Search extends Component {
 
     render() {
         return (
-        <form className='search' onSubmit={this.onSubmit}>
+        <form className={styles['search']} onSubmit={this.onSubmit}>
         <label htmlFor='location' autoComplete='off' type='text'></label>
-          <input className='search-bar' autoComplete='off' type='text' id='location' name='location' value={this.state.location} onChange={this.onChange} placeholder='Location' required />
+          <input className={styles['search-bar']} autoComplete='off' type='text' id='location' name='location' value={this.state.location} onChange={this.onChange} placeholder='Location' required />
         <label htmlFor='cuisine' autoComplete='off' type='text'></label>
-          <input className='search-bar' autoComplete='off' type='text' id='cuisine' name='cuisine' value={this.state.cuisine} onChange={this.onChange} placeholder='Cuisine' required/>
-          <button className='submit-btn' type='submit'>Let's Go</button>
+          <input className={styles['search-bar']} autoComplete='off' type='text' id='cuisine' name='cuisine' value={this.state.cuisine} onChange={this.onChange} placeholder='Cuisine' required/>
+          <button className={styles['submit-btn']} type='submit'>Let's Go</button>
         </form>
         )
     }
