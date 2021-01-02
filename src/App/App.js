@@ -10,7 +10,8 @@ class App extends Component {
 
   state={
     restaurants: [],
-    loading: false
+    loading: false,
+    signInForm: false
   }
 
  // componentDidMount() {
@@ -52,10 +53,19 @@ class App extends Component {
      .then(() => this.setState({ loading: false })))
   }
 
+  // Show sign in form
+  showSignInForm = (e) => {
+    if (this.state.signInForm) {
+      return this.setState({ signInForm: false })
+    }else {
+      return this.setState({ signInForm: true })
+    }
+  }
+
   render() {
     return(
       <>
-      <Navbar />
+      <Navbar showSignInForm={this.showSignInForm} signInForm={this.state.signInForm} />
       <main className={styles['mainContent']}>
       <header className={styles['restaurant-img']}>
         <h2 className={styles['header']}>Find your restaurant for any occasion</h2>
