@@ -11,7 +11,7 @@ class App extends Component {
   state={
     restaurants: [],
     loading: false,
-    signInForm: false
+    modal: false
   }
 
  // componentDidMount() {
@@ -54,18 +54,18 @@ class App extends Component {
   }
 
   // Show sign in form
-  showSignInForm = (e) => {
-    if (this.state.signInForm) {
-      return this.setState({ signInForm: false })
+  showModal = (e) => {
+    if (this.state.modal) {
+      return this.setState({ modal: false })
     }else {
-      return this.setState({ signInForm: true })
+      return this.setState({ modal: true })
     }
   }
 
   render() {
     return(
       <>
-      <Navbar showSignInForm={this.showSignInForm} signInForm={this.state.signInForm} />
+      <Navbar showModal={this.showModal} modal={this.state.modal} />
       <main className={styles['mainContent']}>
       <header className={styles['restaurant-img']}>
         <h2 className={styles['header']}>Find your restaurant for any occasion</h2>

@@ -2,16 +2,17 @@ import React, { useState } from 'react'
 import './Navbar.module.css'
 import Button from '@material-ui/core/Button';
 import SignIn from '../../../pages/SignIn/SignIn'
+import Modal from '../Modal/Modal'
 
-function Navbar({ showSignInForm, signInForm }) {
+function Navbar({ showModal, modal }) {
 
     return (
         <>
         <nav className='navbar'>
-            <Button variant='contained' color='secondary' >Sign up</Button>
-            <Button variant='outlined' color='secondary' onClick={() => showSignInForm()} className='toggle-button'>Sign in</Button>
+            <Button variant='contained' color='secondary'onClick={() => showModal()} >Sign up</Button>
+            <Button variant='outlined' color='secondary' onClick={() => showModal()} className='toggle-button'>Sign in</Button>
         </nav>
-        {signInForm && <SignIn onClose={showSignInForm} />}
+        {modal && <Modal onClose={showModal} />}
         </>
     )
 }
