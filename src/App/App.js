@@ -4,6 +4,7 @@ import RestaurantCard from '../components/RestaurantCard/RestaurantCard.js'
 import Search from '../components/Search/Search.js'
 import { cuisines } from '../mockData'
 import axios from 'axios'
+import Navbar from '../components/layout/Navbar/Navbar'
 
 class App extends Component {
 
@@ -53,6 +54,8 @@ class App extends Component {
 
   render() {
     return(
+      <>
+      <Navbar />
       <main className={styles['mainContent']}>
       <header className={styles['restaurant-img']}>
         <h2 className={styles['header']}>Find your restaurant for any occasion</h2>
@@ -62,6 +65,7 @@ class App extends Component {
         <RestaurantCard restaurants={this.state.restaurants} loading={this.state.loading} />
       </section>
       </main>
+      </>
     )
   }
 }
