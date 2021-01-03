@@ -11,7 +11,8 @@ class App extends Component {
   state={
     restaurants: [],
     loading: false,
-    modal: false
+    modal: false,
+    content: null
   }
 
  // componentDidMount() {
@@ -54,18 +55,18 @@ class App extends Component {
   }
 
   // Show sign in form
-  showModal = (e) => {
+  showModal = (content) => {
     if (this.state.modal) {
-      return this.setState({ modal: false })
+      return this.setState({ modal: false, content: null })
     }else {
-      return this.setState({ modal: true })
+      return this.setState({ modal: true, content: content })
     }
   }
 
   render() {
     return(
       <>
-      <Navbar showModal={this.showModal} modal={this.state.modal} />
+      <Navbar showModal={this.showModal} modal={this.state.modal} content={this.state.content} />
       <main className={styles['mainContent']}>
       <header className={styles['restaurant-img']}>
         <h2 className={styles['header']}>Find your restaurant for any occasion</h2>

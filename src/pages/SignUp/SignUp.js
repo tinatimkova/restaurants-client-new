@@ -1,9 +1,12 @@
 import React from 'react'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import styles from './SignUp.module.css'
 
 function SignUp() {
     return (
         <>
-            <form>
+            <form className={styles['sign-up-form']}>
                 <h3>Please sign up</h3>
                 <hr/>
                 <TextField type='text' name='first_name' label='First name' variant="outlined" />
