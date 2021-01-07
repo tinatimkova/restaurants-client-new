@@ -9,8 +9,8 @@ const RestaurantCard = ({ restaurants, loading }) => {
   } else {
     return(
       restaurants.map(i => (
-        <a href='#'><ul className={styles['restaurant-card']} key={i.restaurant.id}>
-          <img className={styles['card-img']} src={i.restaurant.featured_image.length !== 0 ? i.restaurant.featured_image : placeholder } alt='featured image'/>
+        <a href={i.restaurant.url}  key={i.restaurant.id} target='_blank'><ul className={styles['restaurant-card']}>
+          <img className={styles['card-img']} src={i.restaurant.featured_image.length !== 0 ? i.restaurant.featured_image : placeholder } alt='featured restaurant'/>
           <div className={styles['restaurant-info']}>
           <li className={styles['name']}>{i.restaurant.name}</li>
           <li>{i.restaurant.location.city}</li>

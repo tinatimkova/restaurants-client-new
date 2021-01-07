@@ -49,7 +49,6 @@ section.cards div {
 section.cards a:link, a:visited {
   text-decoration: none;
   color: black;
-  position: relative;
   top: 0;
   transition: top ease 0.5s;
 }

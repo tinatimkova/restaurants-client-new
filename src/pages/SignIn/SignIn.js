@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
-function SignIn() {
+function SignIn({ showModal, getUser }) {
     const [formData, setFormData] = useState({ email: '', password: '' })
 
     const handleSubmit = async (e) => {
@@ -13,10 +13,11 @@ function SignIn() {
         const res = await axios({
             method: 'POST',
             url: 'http://localhost:4741/sign-in',
-            data: formData
+            data: { "credentials": formData }
         })
 
-        console.log(res)
+        getUser(res.data.user.email, res.data.user.token)
+        showModal()
         }
 
     const handleChange = (e) => {
