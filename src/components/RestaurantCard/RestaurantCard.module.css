@@ -5,7 +5,7 @@ ul.restaurant-card {
     flex-direction: column;
     padding: 0px;
     margin: 1rem;
-    max-width: 400px;
+    max-width: 25rem;
     justify-content: space-around;
   }
   
@@ -63,3 +63,8 @@ ul.restaurant-card {
     margin-left: 0.5rem;
     vertical-align: middle;
   }
+
+  ul.restaurant-card a:hover{
+    opacity: 0.7;
+  }
+  

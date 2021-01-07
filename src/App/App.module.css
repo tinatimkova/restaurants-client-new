@@ -46,17 +46,5 @@ section.cards div {
   margin: 1rem;
 }
 
-section.cards a:link, a:visited {
-  text-decoration: none;
-  color: black;
-  top: 0;
-  transition: top ease 0.5s;
-}
-
-section.cards a:hover {
-  top: -10px;
-}
-
-
 
 
