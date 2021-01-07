@@ -2,17 +2,26 @@ import React, { useState } from 'react'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import styles from './SignUp.module.css'
+import axios from 'axios';
 
 function SignUp() {
     const [formData, setFormData] = useState({first_name: '', last_name: '', email: '', password: ''})
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(formData)
+
+        const res = await axios({
+            method: 'POST',
+            url: 'http://localhost:4741/sign-up',
+            data: formData
+            })
+
+        console.log(res)
     }
 
     const handleChange = (e) => {
-        setFormData({ [e.target.name]: e.target.value })
+        setFormData((state) => ({...state,
+             [e.target.name]: e.target.value }))
     }
 
     return (
