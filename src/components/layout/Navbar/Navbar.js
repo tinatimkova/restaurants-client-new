@@ -1,19 +1,21 @@
 import React from 'react'
 import './Navbar.module.css'
 import Button from '@material-ui/core/Button';
-import SignIn from '../../../pages/SignIn/SignIn'
-import SignUp from '../../../pages/SignUp/SignUp'
+import SignIn from '../../auth/SignIn/SignIn'
+import SignUp from '../../auth/SignUp/SignUp'
 import Modal from '../Modal/Modal'
+import { signOut } from '../../../api/auth'
 
-function Navbar({ showModal, modal, content, getUser, email }) {
+function Navbar({ showModal, modal, content, getUser, user }) {
 
     const handleSingOut = () => {
-        getUser(email = '')
+        signOut(user)
+        getUser(null)
     }
 
     return (
         <>
-        { email !=='' ?   <nav className='navbar'><div>Welcome, {email}</div>
+        { user !== null ?  <nav className='navbar'><div>Welcome, {user.email}</div>
         <Button variant='contained' color='primary' onClick={handleSingOut} >Log out</Button>
         </nav> :
         <nav className='navbar'>

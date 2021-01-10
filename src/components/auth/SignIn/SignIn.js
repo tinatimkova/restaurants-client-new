@@ -2,22 +2,19 @@ import React, { useState } from 'react';
 import styles from './SignIn.module.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import axios from 'axios';
+import { signIn } from '../../../api/auth';
 
 function SignIn({ showModal, getUser }) {
     const [formData, setFormData] = useState({ email: '', password: '' })
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
-        const res = await axios({
-            method: 'POST',
-            url: 'http://localhost:4741/sign-in',
-            data: { "credentials": formData }
-        })
-
-        getUser(res.data.user.email, res.data.user.token)
-        showModal()
+        signIn(formData)
+            .then(res => getUser(res.data.user))
+            .then(() => showModal())
+            .then(() => alert('You have signed in successfully!'))
+            .catch(() => alert('Something went wrong!'))
         }
 
     const handleChange = (e) => {

@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import styles from './SignUp.module.css'
-import axios from 'axios';
+import styles from './SignUp.module.css';
+import { signUp } from '../../../api/auth';
 
 function SignUp({ showModal, getUser }) {
     const [formData, setFormData] = useState({given_name: '', family_name: '', email: '', password: '', password_confirmation: ''})
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
-        const res = await axios({
-            method: 'POST',
-            url: 'http://localhost:4741/sign-up',
-            data: { "credentials" : formData }
-            })
-
-        getUser(res.data.user.email)
-        showModal()
+        signUp(formData)
+        .then(res => getUser(res.data.user))
+        .then(() => showModal())
+        .then(() => alert('You have signed up successfully!'))
+        .catch(() => setFormData({given_name: '', family_name: '', email: '', password: '', password_confirmation: ''}), alert('Something went wrong!'))
     }
 
     const handleChange = (e) => {

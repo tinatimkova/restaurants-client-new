@@ -13,8 +13,7 @@ class App extends Component {
     loading: false,
     modal: false,
     content: null,
-    token: '',
-    email: ''
+    user: null
   }
 
  // componentDidMount() {
@@ -65,14 +64,14 @@ class App extends Component {
     }
   }
 
-  getUser = (email, token) => {
-    return this.setState({ email, token })
+  getUser = (user) => {
+    return this.setState({ user: user })
   }
 
   render() {
     return(
       <>
-      <Navbar showModal={this.showModal} modal={this.state.modal} content={this.state.content} getUser={this.getUser} email={this.state.email}/>
+      <Navbar showModal={this.showModal} modal={this.state.modal} content={this.state.content} getUser={this.getUser} user={this.state.user}/>
       <main className={styles['mainContent']}>
       <header className={styles['restaurant-img']}>
         <h2 className={styles['header']}>Find your restaurant for any occasion</h2>
