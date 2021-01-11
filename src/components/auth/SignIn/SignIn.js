@@ -29,9 +29,9 @@ function SignIn({ showModal, getUser }) {
         <form className={styles['sign-in-form']} onSubmit={handleSubmit}>
             <h3>Please sign in</h3>
             <hr/>
-            <TextField variant="outlined"  type='email' name='email' label='Email' value={formData.email} onChange={handleChange} />
-            <TextField variant="outlined" type='password' name='password' label='Password' value={formData.password} onChange={handleChange} />
-            <Button variant='contained' className='toggle-button' type='submit'>Sign In</Button>
+            <TextField variant="outlined" style={{ margin: '0.5rem'}}  type='email' name='email' label='Email' value={formData.email} onChange={handleChange} />
+            <TextField variant="outlined" style={{ margin: '0.5rem'}} type='password' name='password' label='Password' value={formData.password} onChange={handleChange} />
+            <Button variant='contained' className={styles['toggle-button']} type='submit'>Sign In</Button>
             </form>
         </>
     )

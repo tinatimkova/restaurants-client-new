@@ -7,7 +7,7 @@ function Modal({ content, onClose }) {
         <div className={styles['modal']}>
             <div className={styles['modal-main']}>
                {content}
-               <Button variant='contained' color='secondary' onClick={() => onClose()}>Close</Button>
+               <Button variant='contained' color='secondary' style={{ marginBottom: '1rem' }} onClick={() => onClose()}>Close</Button>
             </div>
         </div>
     )

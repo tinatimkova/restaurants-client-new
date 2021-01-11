@@ -3,8 +3,8 @@ import styles from './App.module.css'
 import RestaurantCard from '../components/RestaurantCard/RestaurantCard.js'
 import Search from '../components/Search/Search.js'
 import { cuisines } from '../mockData'
-import axios from 'axios'
 import Navbar from '../components/layout/Navbar/Navbar'
+import { getCityId, getRestaurants } from '../api/restaurants'
 
 class App extends Component {
 
@@ -16,43 +16,23 @@ class App extends Component {
     user: null
   }
 
- // componentDidMount() {
-   // axios.get('https://radiant-meadow-15877.herokuapp.com/restaurants')
-   // .then(res => this.setState({restaurants: res.data.restaurants, loading: true}))
-   // .then(() => this.setState({loading: false}))
-  // }
-
   //Search restaurants
   searchRestaurants = (location, cuisine) => {
+    this.setState({ loading: true })
     let cuisineId
     let locationId
+
     cuisines.map(i => {
       if (i['cuisine']['cuisine_name'] === cuisine) {
         cuisineId = i['cuisine']['cuisine_id'].toString()
       }
     })
 
-    axios({
-      method: 'GET',
-      url: `https://developers.zomato.com/api/v2.1/locations?query=${location}`,
-      headers: {
-        'user-key': '3db78ccb4d5aca6f67f342f16abd68ac',
-        'content-type': 'application/json'
-      }
-    })
+    getCityId(location)
     .then(res => locationId = res.data.location_suggestions[0].city_id)
-    .then(axios({
-      method: 'GET',
-       url: `https://developers.zomato.com/api/v2.1/search?entity_id=${locationId}&cuisines=${cuisineId}`,
-       headers: {
-        'user-key': '3db78ccb4d5aca6f67f342f16abd68ac',
-        'content-type': 'application/json'
-       }
-     })
-     .then(res => 
-      { console.log(res)
-        this.setState({ restaurants: res.data.restaurants, loading: true})})
-     .then(() => this.setState({ loading: false })))
+    .then(() => getRestaurants(locationId, cuisineId))
+    .then(res => {this.setState({ restaurants: res.data.restaurants })})
+    .then(() => this.setState({ loading: false }))
   }
 
   // Show sign in form
@@ -67,6 +47,7 @@ class App extends Component {
   getUser = (user) => {
     return this.setState({ user: user })
   }
+
 
   render() {
     return(
