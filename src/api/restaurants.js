@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { cuisines } from '../mockData';
 
 export const getCityId = (location) => {
     return axios({
@@ -20,4 +21,10 @@ export const getRestaurants = (locationId, cuisineId) => {
           'content-type': 'application/json'
          }
        })
+}
+
+export const getCuisineId = (cuisine) => {
+  const cuisineInfo = cuisines.find(item => item['cuisine']['cuisine_name'] === cuisine)
+  const cuisineId = cuisineInfo['cuisine']['cuisine_id'].toString()
+  return cuisineId
 }

@@ -2,9 +2,9 @@ import react, { Component } from 'react'
 import styles from './App.module.css'
 import RestaurantCard from '../components/RestaurantCard/RestaurantCard.js'
 import Search from '../components/Search/Search.js'
-import { cuisines } from '../mockData'
+
 import Navbar from '../components/layout/Navbar/Navbar'
-import { getCityId, getRestaurants } from '../api/restaurants'
+import { getCityId, getCuisineId, getRestaurants } from '../api/restaurants'
 
 class App extends Component {
 
@@ -19,14 +19,8 @@ class App extends Component {
   //Search restaurants
   searchRestaurants = (location, cuisine) => {
     this.setState({ loading: true })
-    let cuisineId
     let locationId
-
-    cuisines.map(i => {
-      if (i['cuisine']['cuisine_name'] === cuisine) {
-        cuisineId = i['cuisine']['cuisine_id'].toString()
-      }
-    })
+    let cuisineId = getCuisineId(cuisine)
 
     getCityId(location)
     .then(res => locationId = res.data.location_suggestions[0].city_id)
@@ -59,7 +53,7 @@ class App extends Component {
         <Search searchRestaurants={this.searchRestaurants}/>
       </header>
       <section className={styles['cards']}>
-        <RestaurantCard restaurants={this.state.restaurants} loading={this.state.loading} />
+        <RestaurantCard restaurants={this.state.restaurants} loading={this.state.loading} user={this.state.user} />
       </section>
       </main>
       </>
