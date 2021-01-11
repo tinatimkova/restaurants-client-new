@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { cuisines } from '../mockData';
+import { cuisines } from '../cuisines';
 
 export const getCityId = (location) => {
     return axios({

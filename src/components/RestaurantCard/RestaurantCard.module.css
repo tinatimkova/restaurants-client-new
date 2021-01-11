@@ -15,7 +15,9 @@ ul.restaurant-card {
   }
 
   .card-img {
-    max-width: 400px;
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
   }
   
   .stars {
@@ -66,5 +68,22 @@ ul.restaurant-card {
 
   ul.restaurant-card a:hover{
     opacity: 0.7;
+  }
+
+  .icon_description{
+    visibility: hidden;
+  }
+
+  .add_icon{
+  }
+
+  .icon_wrapper{
+    position: absolute;
+    align-self: flex-end;
+    margin: 0;
+  }
+
+  .icon_wrapper:hover .icon_description{
+    visibility: visible;
   }
   

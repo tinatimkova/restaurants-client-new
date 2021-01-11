@@ -1,7 +1,7 @@
 import './RestaurantCard.module.css'
 import AddIcon from '@material-ui/icons/Add';
 import spinner from '../../spinner.gif'
-import placeholder from './placeholder.png'
+import placeholder from './restaurant_placeholder.png'
 import styles from './RestaurantCard.module.css'
 
 const RestaurantCard = ({ restaurants, loading, user }) => {
@@ -11,7 +11,11 @@ const RestaurantCard = ({ restaurants, loading, user }) => {
     return(
       restaurants.map(i => (
         <ul className={styles['restaurant-card']} key={i.restaurant.id}>
-          { user && <AddIcon style={{ alignSelf: 'flex-end' }}/>}
+          { user && 
+          <div className={styles['icon_wrapper']}>
+            <p className={styles['icon_description']}>Add to my list</p>
+            <AddIcon className={styles['add_icon']}/>
+            </div>}
           <a href={i.restaurant.url} target='_blank' rel="noreferrer">
           <img className={styles['card-img']} src={i.restaurant.featured_image.length !== 0 ? i.restaurant.featured_image : placeholder } alt='featured restaurant'/>
           </a>
