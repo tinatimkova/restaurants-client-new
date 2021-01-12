@@ -1,4 +1,4 @@
-ul.restaurant-card {
+div.restaurant-card {
     list-style-type: none;
     border: 1px solid rgb(225, 225, 225);
     display: flex;
@@ -8,7 +8,7 @@ ul.restaurant-card {
     max-width: 25rem;
     justify-content: space-around;
   }
-  
+
   .restaurant-info li {
     margin: 0.2rem;
     font-size: 1.1rem;
@@ -19,7 +19,7 @@ ul.restaurant-card {
     height: 200px;
     object-fit: contain;
   }
-  
+
   .stars {
     --percent: calc(var(--rating) / 5 * 100%);
     display: inline-block;
@@ -27,7 +27,7 @@ ul.restaurant-card {
     font-family: Times;
     line-height: 1;
   }
-  
+
   .stars::before {
     content: "★★★★★";
     background: linear-gradient(
@@ -38,13 +38,13 @@ ul.restaurant-card {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
   .dollars {
     --percent: calc(var(--price) / 4 * 100%);
     font-size: var(--dollar-size);
     margin-left: 0.5rem;
   }
-  
+
   .dollars::before {
     content: "$$$$";
     background: linear-gradient(
@@ -55,35 +55,48 @@ ul.restaurant-card {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
-  .name {
+
+  .name a{
     font-weight: bold;
+    text-decoration: none;
+    color: black;
   }
-  
+
+  .name a:hover{
+    text-decoration: underline;
+  }
+
   .reviews {
     font-size: 1rem;
     margin-left: 0.5rem;
     vertical-align: middle;
   }
 
-  ul.restaurant-card a:hover{
-    opacity: 0.7;
-  }
-
-  .icon_description{
-    visibility: hidden;
-  }
-
-  .add_icon{
-  }
-
-  .icon_wrapper{
-    position: absolute;
+  div.icon-wrapper{
+    display: flex;
     align-self: flex-end;
-    margin: 0;
+    width: fit-content;
+    justify-content: flex-end;
+    position: relative;
+    margin: 0 !important;
+    width: 2rem;
+    z-index: 1;
+    cursor: pointer;
   }
 
-  .icon_wrapper:hover .icon_description{
+  .icon-description{
+    border-radius: 6px;
+    background: black;
+    color: #fff;
+    border: 1px dotted #fff;
+    padding: 5px 3px;
+    position: absolute;
+    top: -2.3rem;
+    visibility: hidden;
+    width: 7rem;
+    text-align: center;
+  }
+
+  .icon-wrapper:hover .icon-description{
     visibility: visible;
   }
-  
