@@ -53,7 +53,9 @@ class App extends Component {
         <Search searchRestaurants={this.searchRestaurants}/>
       </header>
       <section className={styles['cards']}>
-        <RestaurantCard restaurants={this.state.restaurants} loading={this.state.loading} user={this.state.user} />
+        {this.state.restaurants.map(i => (
+          <RestaurantCard restaurant={i.restaurant} loading={this.state.loading} user={this.state.user} />
+        ))}
       </section>
       </main>
       </>
