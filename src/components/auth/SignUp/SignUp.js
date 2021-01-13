@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import styles from './SignUp.module.css';
 import { signUp } from '../../../api/auth';
 
-function SignUp({ showModal, getUser }) {
+function SignUp({ showModal, getUser, showAlert }) {
     const [formData, setFormData] = useState({given_name: '', family_name: '', email: '', password: '', password_confirmation: ''})
 
     const handleSubmit = (e) => {
@@ -13,8 +13,8 @@ function SignUp({ showModal, getUser }) {
         signUp(formData)
         .then(res => getUser(res.data.user))
         .then(() => showModal())
-        .then(() => alert('You have signed up successfully!'))
-        .catch(() => setFormData({given_name: '', family_name: '', email: '', password: '', password_confirmation: ''}), alert('Something went wrong!'))
+        .then(() => showAlert('success', 'You have signed up successfully!'))
+        .catch(() => setFormData({given_name: '', family_name: '', email: '', password: '', password_confirmation: ''}), showAlert('error', 'Something went wrong!'))
     }
 
     const handleChange = (e) => {

@@ -1,31 +1,24 @@
-import { useState } from 'react';
 import './RestaurantCard.module.css'
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import spinner from '../../spinner.gif'
 import placeholder from './restaurant_placeholder.png'
 import styles from './RestaurantCard.module.css'
 
-const RestaurantCard = ({ restaurant, loading, user }) => {
-
-  const [list, setList] = useState([])
-
-  const addToList = (e) => {
-      e.preventDefault()
-
-      setList(restaurant.id)
-      console.log(list)
-    }
+const RestaurantCard = ({ restaurant, loading, user, addToList }) => {
 
   if (loading) {
     return <img src={spinner} alt="Loading..." />
   } else {
     return(
-        <div className={styles['restaurant-card']} key={restaurant.id}>
-          { user &&
-          <div className={styles['icon-wrapper']} onClick={addToList}>
-            <AddCircleOutlineIcon className={styles['add-icon']} />
-            <span className={styles['icon-description']}>Add to my list</span>
-          </div>}
+        <div className={styles['restaurant-card']}>
+          {/* { user && */}
+          <FormGroup className={styles['like-form']}>
+          <FormControlLabel style={{ margin: '0px'}} control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} id={restaurant.id} name="liked" value={JSON.stringify(restaurant.R)} onClick={addToList} />} />
+          </FormGroup>
           <img className={styles['card-img']} src={restaurant.featured_image.length !== 0 ? restaurant.featured_image : placeholder } alt='featured restaurant'/>
           <div className={styles['restaurant-info']}>
           <li className={styles['name']}><a href={restaurant.url} target='_blank' rel="noreferrer">{restaurant.name}</a></li>

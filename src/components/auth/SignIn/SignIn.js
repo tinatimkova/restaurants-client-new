@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { signIn } from '../../../api/auth';
 
-function SignIn({ showModal, getUser }) {
+function SignIn({ showModal, getUser, showAlert }) {
     const [formData, setFormData] = useState({ email: '', password: '' })
 
     const handleSubmit = (e) => {
@@ -13,8 +13,8 @@ function SignIn({ showModal, getUser }) {
         signIn(formData)
             .then(res => getUser(res.data.user))
             .then(() => showModal())
-            .then(() => alert('You have signed in successfully!'))
-            .catch(() => alert('Something went wrong!'))
+            .then(() => showAlert('success', 'You have signed in successfully!'))
+            .catch(() => showAlert('error', 'Something went wrong!'))
         }
 
     const handleChange = (e) => {

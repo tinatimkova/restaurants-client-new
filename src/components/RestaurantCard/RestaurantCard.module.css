@@ -72,31 +72,7 @@ div.restaurant-card {
     vertical-align: middle;
   }
 
-  div.icon-wrapper{
-    display: flex;
-    align-self: flex-end;
-    width: fit-content;
-    justify-content: flex-end;
-    position: relative;
+  .like-form{
     margin: 0 !important;
-    width: 2rem;
-    z-index: 1;
-    cursor: pointer;
-  }
-
-  .icon-description{
-    border-radius: 6px;
-    background: black;
-    color: #fff;
-    border: 1px dotted #fff;
-    padding: 5px 3px;
-    position: absolute;
-    top: -2.3rem;
-    visibility: hidden;
-    width: 7rem;
-    text-align: center;
-  }
-
-  .icon-wrapper:hover .icon-description{
-    visibility: visible;
+    align-self: flex-end;
   }
