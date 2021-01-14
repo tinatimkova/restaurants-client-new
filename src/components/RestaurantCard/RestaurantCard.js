@@ -16,7 +16,7 @@ const RestaurantCard = ({ restaurant, loading, user, addToList, list}) => {
   } else {
     return(
         <div className={styles['restaurant-card']}>
-          {/* { user && */}
+          { user &&
           <FormGroup className={styles['like-form']}>
           <FormControlLabel style={{ margin: '0px'}}
            control={<Checkbox icon={<FavoriteBorder />}
@@ -25,7 +25,7 @@ const RestaurantCard = ({ restaurant, loading, user, addToList, list}) => {
            name="liked"
            value={JSON.stringify(restaurant.R)} onClick={addToList}
            checked={list.length > 0 && list.findIndex(i => i.id === restaurant.id) !== -1 && true} />} />
-          </FormGroup>
+          </FormGroup>}
           <img className={styles['card-img']} src={restaurant.featured_image.length !== 0 ? restaurant.featured_image : placeholder } alt='featured restaurant'/>
           <div className={styles['restaurant-info']}>
           <li className={styles['name']}><a href={restaurant.url} target='_blank' rel="noreferrer">{restaurant.name}</a></li>

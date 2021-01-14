@@ -9,12 +9,11 @@ import { saveRestaurantList } from '../../../api/restaurants'
 
 function Navbar({ showModal, modal, content, getUser, user, showAlert, list }) {
 
-    const handleSingOut = (list) => {
-        saveRestaurantList(list)
+    const handleSingOut = () => {
+        list.map(restaurant => saveRestaurantList(restaurant, user))
         signOut(user)
             .then(() => showAlert('success', 'You successfully signed out!'))
             .then(() => getUser(null))
-        
     }
 
     return (

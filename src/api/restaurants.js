@@ -1,4 +1,6 @@
+import { ContactSupportOutlined } from '@material-ui/icons';
 import axios from 'axios';
+import apiUrl from '../apiConfig';
 import { cuisines } from '../cuisines';
 
 export const getCityId = (location) => {
@@ -29,13 +31,17 @@ export const getCuisineId = (cuisine) => {
   return cuisineId
 }
 
-export const saveRestaurantList = (list, user) => {
-  list.map(i => console.log(i))
-  return axios({
-    method: 'POST',
-    url: `${apiUrl}/restaurants`,
-    headers: {
-      'Authorization': `Token token=${user.token}`
-    }
-  })
+export const saveRestaurantList = (restaurant, user) => {
+    return axios({
+      method: 'POST',
+      url: `${apiUrl}/restaurants`,
+      headers: {
+        'Authorization': 'Token token='+ user.token
+      },
+      data: {
+        'restaurant': {
+          'restaurant_id': restaurant.id
+        }
+      }
+    })
 }
