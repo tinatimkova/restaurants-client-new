@@ -32,6 +32,7 @@ header.restaurant-img {
 
 .mainContent {
   display: block;
+  text-align: center;
 }
 
 section.cards {

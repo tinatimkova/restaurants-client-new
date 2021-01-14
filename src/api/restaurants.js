@@ -28,3 +28,14 @@ export const getCuisineId = (cuisine) => {
   const cuisineId = cuisineInfo['cuisine']['cuisine_id'].toString()
   return cuisineId
 }
+
+export const saveRestaurantList = (list, user) => {
+  list.map(i => console.log(i))
+  return axios({
+    method: 'POST',
+    url: `${apiUrl}/restaurants`,
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}

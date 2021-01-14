@@ -1,4 +1,4 @@
-import react, { Component } from 'react'
+import { Component } from 'react'
 import styles from './App.module.css'
 import RestaurantCard from '../components/RestaurantCard/RestaurantCard.js'
 import Search from '../components/Search/Search.js'
@@ -41,6 +41,12 @@ class App extends Component {
     }
   }
 
+  // Return to search 
+  goBackToSearch = (e) => {
+    e.preventDefault()
+    this.setState({ restaurants: [] })
+  }
+
   addToList = (e) => {
     if (e.target.checked) {
       // Add a restaurant to the wish list
@@ -64,34 +70,41 @@ class App extends Component {
   }
 
   render() {
+
+    const { modal, user, content, restaurants, loading, alert, list } = this.state
+
     return(
       <>
       <Navbar
         showModal={this.showModal}
-        modal={this.state.modal}
-        content={this.state.content}
+        modal={modal}
+        content={content}
         getUser={this.getUser}
-        user={this.state.user}
+        user={user}
         showAlert={this.showAlert}
+        list={list}
         />
       <main className={styles['mainContent']}>
-      <header className={styles['restaurant-img']}>
+        {!restaurants.length && 
+        <header className={styles['restaurant-img']}>
         <h2 className={styles['header']}>Find your restaurant for any occasion</h2>
         <Search searchRestaurants={this.searchRestaurants}/>
-      </header>
+        </header>}
+      { restaurants.length > 0 && <button className={styles['back-to-search']} onClick={this.goBackToSearch}>Back To Search</button> }
       <section className={styles['cards']}>
-        {this.state.restaurants.map(i => (
+        {restaurants.map(i => (
           <RestaurantCard
           key={i.restaurant.id}
           restaurant={i.restaurant} 
-          loading={this.state.loading} 
-          user={this.state.user}
+          loading={loading} 
+          user={user}
           addToList={this.addToList}
+          list={list}
           />
         ))}
       </section>
       </main>
-      {this.state.alert && <UserAlert alert={this.state.alert} />}
+      {alert && <UserAlert alert={alert} />}
       </>
     )
   }

@@ -5,10 +5,12 @@ import SignIn from '../../auth/SignIn/SignIn'
 import SignUp from '../../auth/SignUp/SignUp'
 import Modal from '../Modal/Modal'
 import { signOut } from '../../../api/auth'
+import { saveRestaurantList } from '../../../api/restaurants'
 
-function Navbar({ showModal, modal, content, getUser, user, showAlert }) {
+function Navbar({ showModal, modal, content, getUser, user, showAlert, list }) {
 
-    const handleSingOut = () => {
+    const handleSingOut = (list) => {
+        saveRestaurantList(list)
         signOut(user)
             .then(() => showAlert('success', 'You successfully signed out!'))
             .then(() => getUser(null))
