@@ -1,8 +1,33 @@
 .list-of-cuisines{
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    margin: 1rem auto;
+}
+
+.cuisine:hover{
+    opacity: 0.9;
+}
+
+.cuisine-name:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .cuisine{
-    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    background: #ffcccc; 
+    border: 1px solid #da3743;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+}
+
+.cuisine-title{
+    color: #da3743;
+    margin: 0px;
 }

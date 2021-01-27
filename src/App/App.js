@@ -103,7 +103,7 @@ class App extends Component {
           />
         ))} 
       </section>*/}
-      { cuisines && <Cuisines cuisines={cuisines} />}
+       {cuisines && <Cuisines cuisines={cuisines} loading={loading} />}
       </main>
       {alert && <UserAlert alert={alert} />}
       </>
