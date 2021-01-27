@@ -4,13 +4,13 @@ import styles from './Search.module.css';
 class Search extends Component {
     state={
      location: '',
-     cuisine: ''
+     cuisines: null
     }
 
     onSubmit = e => {
       e.preventDefault()
-        this.props.searchRestaurants(this.state.location, this.state.cuisine)
-        this.setState({ location: '', cuisine: ''})
+        this.props.searchRestaurants(this.state.location)
+        this.setState({ location: '', cuisines: null})
     }
 
     onChange = e => this.setState({ [ e.target.name ]: e.target.value })
@@ -19,9 +19,7 @@ class Search extends Component {
         return (
         <form className={styles['search']} onSubmit={this.onSubmit}>
         <label htmlFor='location' autoComplete='off' type='text'></label>
-          <input className={styles['search-bar']} autoComplete='off' type='text' id='location' name='location' value={this.state.location} onChange={this.onChange} placeholder='Location' required />
-        <label htmlFor='cuisine' autoComplete='off' type='text'></label>
-          <input className={styles['search-bar']} autoComplete='off' type='text' id='cuisine' name='cuisine' value={this.state.cuisine} onChange={this.onChange} placeholder='Cuisine' required/>
+          <input className={styles['search-bar']} autoComplete='off' type='text' id='location' name='location' value={this.state.location} onChange={this.onChange} placeholder='Enter location' required />
           <button className={styles['submit-btn']} type='submit'>Let's Go</button>
         </form>
         )

@@ -25,10 +25,15 @@ export const getRestaurants = (locationId, cuisineId) => {
        })
 }
 
-export const getCuisineId = (cuisine) => {
-  const cuisineInfo = cuisines.find(item => item['cuisine']['cuisine_name'] === cuisine)
-  const cuisineId = cuisineInfo['cuisine']['cuisine_id'].toString()
-  return cuisineId
+export const getCuisines = (locationId) => {
+  return axios({
+    method: 'GET',
+    url: `https://developers.zomato.com/api/v2.1/cuisines?city_id=${locationId}`,
+    headers: {
+      'user-key': '3db78ccb4d5aca6f67f342f16abd68ac',
+      'content-type': 'application/json'
+    }
+  })
 }
 
 export const saveRestaurantList = (restaurant, user) => {

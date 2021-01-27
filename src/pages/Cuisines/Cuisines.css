@@ -1,0 +1,8 @@
+.list-of-cuisines{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cuisine{
+    flex: 1;
+}
