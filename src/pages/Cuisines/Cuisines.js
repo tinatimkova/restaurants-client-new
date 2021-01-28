@@ -4,8 +4,8 @@ import spinner from '../../spinner.gif'
 
 function Cuisines({ cuisines, getRestaurants, loading }) {
 
-    const listOfCuisines = cuisines.map(i => 
-            <li key={i.cuisine.cuisine_id} className='cuisine'><span className='cuisine-name' onClick={getRestaurants}>{i.cuisine.cuisine_name}</span></li>
+    const listOfCuisines = cuisines.map((i, index) => 
+            <li key={index} className='cuisine'><span className='cuisine-name' onClick={getRestaurants(i.cuisine.cuisine_id)}>{i.cuisine.cuisine_name}</span></li>
         )
 
     return (

@@ -21,8 +21,8 @@ class App extends Component {
     alert: null
   }
 
-  //Search restaurants
-  searchRestaurants = (location) => {
+  //Search cuisines
+  searchCuisines = (location) => {
     this.setState({ loading: true })
     let locationId
 
@@ -88,9 +88,9 @@ class App extends Component {
       <main className={styles['mainContent']}>
         <header className={styles['restaurant-img']}>
         <h2 className={styles['header']}>Find your restaurant for any occasion</h2>
-        <Search searchRestaurants={this.searchRestaurants}/>
+        <Search searchCuisines={this.searchCuisines}/>
         </header>
-      {/* { restaurants && <button className={styles['back-to-search']} onClick={this.clearResults}>Clear results</button> }
+      { restaurants && restaurants.length > 0 && <button className={styles['back-to-search']} onClick={this.clearResults}>Clear results</button> }
       <section className={styles['cards']}>
         {restaurants.map(i => (
           <RestaurantCard
@@ -102,8 +102,8 @@ class App extends Component {
           list={list}
           />
         ))} 
-      </section>*/}
-       {cuisines && <Cuisines cuisines={cuisines} loading={loading} />}
+      </section>
+       {cuisines && <Cuisines cuisines={cuisines} loading={loading} getRestaurants={getRestaurants} />}
       </main>
       {alert && <UserAlert alert={alert} />}
       </>

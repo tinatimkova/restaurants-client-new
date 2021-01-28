@@ -9,7 +9,7 @@ class Search extends Component {
 
     onSubmit = e => {
       e.preventDefault()
-        this.props.searchRestaurants(this.state.location)
+        this.props.searchCuisines(this.state.location)
         this.setState({ location: '', cuisines: null})
     }
 
