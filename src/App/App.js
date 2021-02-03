@@ -5,7 +5,7 @@ import Search from '../components/Search/Search.js'
 import UserAlert from '../components/layout/Alert/UserAlert'
 
 import Navbar from '../components/layout/Navbar/Navbar'
-import { getCityId, getCuisines, getRestaurants } from '../api/restaurants'
+import { getCityId, getCuisines } from '../api/restaurants'
 import Cuisines from '../pages/Cuisines/Cuisines'
 
 class App extends Component {
@@ -24,11 +24,9 @@ class App extends Component {
   //Search cuisines
   searchCuisines = (location) => {
     this.setState({ loading: true })
-    let locationId
 
     getCityId(location)
-    .then(res => locationId = res.data.location_suggestions[0].city_id)
-    .then(() => getCuisines(locationId))
+    .then(res => {return getCuisines(res.data.location_suggestions[0].city_id)})
     .then(res => {this.setState({ cuisines: res.data.cuisines })})
     .then(() => this.setState({ loading: false }))
   }
@@ -103,7 +101,7 @@ class App extends Component {
           />
         ))} 
       </section>
-       {cuisines && <Cuisines cuisines={cuisines} loading={loading} getRestaurants={getRestaurants} />}
+       {cuisines && <Cuisines cuisines={cuisines} loading={loading} />}
       </main>
       {alert && <UserAlert alert={alert} />}
       </>

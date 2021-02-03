@@ -1,7 +1,5 @@
-import { ContactSupportOutlined } from '@material-ui/icons';
 import axios from 'axios';
 import apiUrl from '../apiConfig';
-import { cuisines } from '../cuisines';
 
 export const getCityId = (location) => {
     return axios({

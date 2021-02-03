@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './RestaurantCard.module.css';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
