@@ -5,7 +5,7 @@ import Search from '../components/Search/Search.js'
 import UserAlert from '../components/layout/Alert/UserAlert'
 
 import Navbar from '../components/layout/Navbar/Navbar'
-import { getCityId, getCuisines } from '../api/restaurants'
+import { getCityId, getCuisines, getRestaurants } from '../api/restaurants'
 import Cuisines from '../pages/Cuisines/Cuisines'
 
 class App extends Component {
@@ -18,7 +18,8 @@ class App extends Component {
     content: null,
     user: null,
     list: [],
-    alert: null
+    alert: null,
+    location: null
   }
 
   //Search cuisines
@@ -26,7 +27,7 @@ class App extends Component {
     this.setState({ loading: true })
 
     getCityId(location)
-    .then(res => {return getCuisines(res.data.location_suggestions[0].city_id)})
+    .then(res => {this.setState({location: res.data.location_suggestions[0]}); return getCuisines(res.data.location_suggestions[0].city_id)})
     .then(res => {this.setState({ cuisines: res.data.cuisines })})
     .then(() => this.setState({ loading: false }))
   }
@@ -68,9 +69,16 @@ class App extends Component {
     return this.setState({ user: user })
   }
 
+  getListOfRestaurants = (location, cuisine) => {
+    this.setState({ cuisines: null })
+
+    getRestaurants(location.city_id, cuisine)
+    .then(res => this.setState({restaurants: res.data.restaurants}))
+  }
+
   render() {
 
-    const { modal, user, content, restaurants, loading, alert, list, cuisines } = this.state
+    const { modal, user, content, restaurants, loading, alert, list, cuisines, location } = this.state
 
     return(
       <>
@@ -101,7 +109,7 @@ class App extends Component {
           />
         ))} 
       </section>
-       {cuisines && <Cuisines cuisines={cuisines} loading={loading} />}
+       {cuisines && <Cuisines cuisines={cuisines} location={location} loading={loading} getListOfRestaurants={this.getListOfRestaurants} />}
       </main>
       {alert && <UserAlert alert={alert} />}
       </>
