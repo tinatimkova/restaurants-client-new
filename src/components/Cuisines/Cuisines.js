@@ -1,6 +1,6 @@
 import React from 'react'
 import './Cuisines.css'
-import spinner from '../../spinner.gif'
+
 
 function Cuisines({ cuisines, location, loading, getListOfRestaurants }) {
 
@@ -10,8 +10,7 @@ function Cuisines({ cuisines, location, loading, getListOfRestaurants }) {
 
     return (
         <>
-        {loading && <img src={spinner} style={{ width: '250px' }} alt='Loading...' />}
-        <h4 className='cuisine-title'>Searching for restaurants in {location.title}</h4>
+        <h3 className='cuisine-title'>Searching for restaurants in {location.title}</h3>
         <ul className='list-of-cuisines'>{listOfCuisines}</ul>
         </>
     )

@@ -3,10 +3,12 @@ import styles from './App.module.css'
 import RestaurantCard from '../components/RestaurantCard/RestaurantCard.js'
 import Search from '../components/Search/Search.js'
 import UserAlert from '../components/layout/Alert/UserAlert'
-
+import spinner from '../spinner.gif';
 import Navbar from '../components/layout/Navbar/Navbar'
 import { getCityId, getCuisines, getRestaurants } from '../api/restaurants'
-import Cuisines from '../pages/Cuisines/Cuisines'
+import Cuisines from '../components/Cuisines/Cuisines'
+
+import RestaurantsState from '../context/restaurants/RestaurantsState'
 
 class App extends Component {
 
@@ -71,9 +73,11 @@ class App extends Component {
 
   getListOfRestaurants = (location, cuisine) => {
     this.setState({ cuisines: null })
+    this.setState({ loading: true })
 
     getRestaurants(location.city_id, cuisine)
     .then(res => this.setState({restaurants: res.data.restaurants}))
+    .then(() => this.setState({ loading: false }))
   }
 
   render() {
@@ -82,6 +86,7 @@ class App extends Component {
 
     return(
       <>
+      <RestaurantsState>
       <Navbar
         showModal={this.showModal}
         modal={modal}
@@ -109,9 +114,11 @@ class App extends Component {
           />
         ))} 
       </section>
+        {loading && <img src={spinner} style={{ width: '250px' }} alt='Loading...' />}
        {cuisines && <Cuisines cuisines={cuisines} location={location} loading={loading} getListOfRestaurants={this.getListOfRestaurants} />}
       </main>
       {alert && <UserAlert alert={alert} />}
+      </RestaurantsState>
       </>
     )
   }
