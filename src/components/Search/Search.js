@@ -1,29 +1,33 @@
-import React, { Component } from 'react';
+import React, {useState, useContext} from 'react';
 import styles from './Search.module.css';
+import RestaurantsContext from '../../context/restaurants/restaurantsContext'
 
-class Search extends Component {
-    state={
-     location: '',
-     cuisines: null
-    }
+const Search = () => {
 
-    onSubmit = e => {
+  const restaurantsContext = useContext(RestaurantsContext)
+
+  const [text, setText] = useState('')
+  const { getCityId, getCuisines, location} = restaurantsContext
+
+  const searchCuisines = (text) => {
+    getCityId(text)
+    .then(() => get(location))
+}
+
+   const onSubmit = e => {
       e.preventDefault()
-        this.props.searchCuisines(this.state.location)
-        this.setState({ location: '', cuisines: null})
-    }
+      searchCuisines(text)
+   }
 
-    onChange = e => this.setState({ [ e.target.name ]: e.target.value })
+    const onChange = e => setText(e.target.value)
 
-    render() {
         return (
-        <form className={styles['search']} onSubmit={this.onSubmit}>
+        <form className={styles['search']} onSubmit={onSubmit}>
         <label htmlFor='location' autoComplete='off' type='text'></label>
-          <input className={styles['search-bar']} autoComplete='off' type='text' id='location' name='location' value={this.state.location} onChange={this.onChange} placeholder='Enter location' required />
+          <input className={styles['search-bar']} autoComplete='off' type='text' id='location' name='location' value={text} onChange={onChange} placeholder='Enter location' required />
           <button className={styles['submit-btn']} type='submit'>Let's Go</button>
         </form>
         )
-    }
 }
 
 export default Search

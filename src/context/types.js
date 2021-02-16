@@ -1,4 +1,4 @@
-export const SEARCH_CITY = 'SEARCH_CITY'
+export const GET_CITY_ID = 'SEARCH_CITY'
 export const GET_CUISINES = 'GET_CUISINES'
 export const GET_RESTAURANTS = 'GET_RESTAURANTS'
 export const SET_LOADING = 'SET_LOADING'

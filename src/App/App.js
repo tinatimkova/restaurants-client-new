@@ -14,25 +14,25 @@ class App extends Component {
 
   state={
     restaurants: [],
-    cuisines: null,
+   // cuisines: null,
     loading: false,
     modal: false,
     content: null,
     user: null,
     list: [],
     alert: null,
-    location: null
+   // location: null
   }
 
   //Search cuisines
-  searchCuisines = (location) => {
+ /* searchCuisines = (location) => {
     this.setState({ loading: true })
 
     getCityId(location)
     .then(res => {this.setState({location: res.data.location_suggestions[0]}); return getCuisines(res.data.location_suggestions[0].city_id)})
     .then(res => {this.setState({ cuisines: res.data.cuisines })})
     .then(() => this.setState({ loading: false }))
-  }
+  }*/
 
   // Show sign in form
   showModal = (content) => {
